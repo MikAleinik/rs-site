@@ -131,6 +131,14 @@ export const routes: RouteObject[] = [
           return { Component: Community };
         },
       },
+      {
+        path: ROUTES.MENTORING,
+        lazy: async () => {
+          const { Mentoring } = await import('@/pages/mentoring.tsx');
+
+          return { Component: Mentoring };
+        },
+      },
       coursesRoute,
     ],
   },
