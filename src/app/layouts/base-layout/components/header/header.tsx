@@ -29,6 +29,11 @@ const navLinks = [
     href: ROUTES.COMMUNITY,
     dropdownInner: <SchoolMenu heading="community" color="dark" hasTitle={false} />,
   },
+  {
+    label: 'Mentoring',
+    href: ROUTES.MENTORING,
+    dropdownInner: <SchoolMenu heading="mentoring" color="dark" hasTitle={false} />,
+  },
 ];
 
 export const Header = () => {

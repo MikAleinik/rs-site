@@ -1,5 +1,5 @@
 import { GenericItemProps, SchoolList } from './school-list/school-list';
-import { ANCHORS } from '@/app/const';
+import { ANCHORS, ROUTES } from '@/app/const';
 import type { Course } from '@/entities/course';
 import { useDataByName } from '@/shared/hooks/use-data-by-name';
 
@@ -46,8 +46,36 @@ const communityMenuStaticLinks = [
   },
 ];
 
+const mentoringMenuStaticLinks = [
+  {
+    title: 'Mentor is',
+    detailsUrl: `/${ROUTES.MENTORING}/#${ANCHORS.MENTORING_ABOUT}`,
+    description: 'Why is mentor',
+  },
+  {
+    title: 'Process',
+    detailsUrl: `/${ROUTES.MENTORING}/#${ANCHORS.MENTORING_PROCESS}`,
+    description: 'What to do',
+  },
+  {
+    title: 'Become a mentor',
+    detailsUrl: `/${ROUTES.MENTORING}/#${ANCHORS.MENTORING_BECOME}`,
+    description: 'How to register',
+  },
+  {
+    title: 'Profit',
+    detailsUrl: `/${ROUTES.MENTORING}/#${ANCHORS.MENTORING_VIDEO}`,
+    description: 'Why it\'s needed',
+  },
+  {
+    title: 'Feedback',
+    detailsUrl: `/${ROUTES.MENTORING}/#${ANCHORS.MENTORING_FEEDBACK}`,
+    description: 'Feedback about us',
+  },
+];
+
 interface SchoolMenuProps {
-  heading: 'rs school' | 'all courses' | 'community';
+  heading: 'rs school' | 'all courses' | 'community' | 'mentoring';
   hasTitle?: boolean;
   color?: 'dark' | 'light';
 }
@@ -63,6 +91,8 @@ function getMenuItems(
       return schoolMenuStaticLinks;
     case 'community':
       return communityMenuStaticLinks;
+    case 'mentoring':
+      return mentoringMenuStaticLinks;
     default:
       return [];
   }
