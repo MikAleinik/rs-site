@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import classNamesBind from 'classnames/bind';
-import mentorImg from '@/shared/assets/mentors-wanted-poster.webp';
+import { CourseName } from '../../../../dev-data/mentorship-data.types.ts';
+import mentorImg from '@/shared/assets/mentor-with-his-students.webp';
 import { Image } from '@/shared/ui/image';
 import { LinkCustom } from '@/shared/ui/link-custom';
 import { Paragraph } from '@/shared/ui/paragraph';
@@ -10,25 +11,53 @@ import styles from './mentors-wanted.module.scss';
 
 const cx = classNamesBind.bind(styles);
 
-export const MentorsWanted = () => {
+type MentorsWantedProps = {
+  detailsUrl: string;
+  courseName: CourseName;
+  lang?: 'en' | 'ru';
+};
+
+const textContent = {
+  en: {
+    header: 'Course Curriculum',
+    textInfo: 'If you are interested in mentoring our students, please go through the',
+    textLink: 'Mentoring Documentation',
+    textAfterLink: 'for the',
+    textEnd: 'Course.',
+  },
+  ru: {
+    header: 'Учебная программа курса',
+    textInfo: 'Если вы хотите стать ментором, пожалуйста, ознакомьтесь с ',
+    textLink: 'Документацией школы',
+    textAfterLink: 'для',
+    textEnd: 'курса.',
+  },
+};
+
+// TODO Change component name (and inner entity) to 'CourseDocs'
+export const MentorsWanted = ({ detailsUrl, courseName, lang = 'en' }: MentorsWantedProps) => {
   return (
     <section className={cx('mentors-wanted', 'container')}>
       <article className={classNames('content', cx('content'))}>
         <div className={cx('content-left')}>
           <WidgetTitle id="mentors-wanted" mods="lines">
-            Mentors Wanted!
+            {textContent[lang].header}
           </WidgetTitle>
           <Paragraph>
-            If&nbsp;you are interested in mentoring our students, please go through the
+            {textContent[lang].textInfo}
             {' '}
             <LinkCustom
-              href="https://github.com/rolling-scopes-school/tasks/tree/master/angular/mentoring"
+              href={detailsUrl}
               external
             >
-              Mentoring Documentation
+              {textContent[lang].textLink}
             </LinkCustom>
             {' '}
-            for&nbsp;the Angular Course.
+            {textContent[lang].textAfterLink}
+            {' '}
+            {courseName}
+            {' '}
+            {textContent[lang].textEnd}
           </Paragraph>
         </div>
         <div className={cx('picture')}>

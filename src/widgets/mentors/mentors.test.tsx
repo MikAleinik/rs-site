@@ -20,8 +20,8 @@ describe('Mentors', () => {
     expect(screen.getByText(subtitle)).toBeVisible();
   });
 
-  it('renders the become a mentor button', () => {
-    const button = screen.getByRole('link', { name: /Become a mentor/i });
+  it('renders the register as a mentor button', () => {
+    const button = screen.getByRole('link', { name: /Register as a mentor/i });
 
     expect(button).toBeVisible();
     expect(button).toHaveAttribute('href', 'https://app.rs.school/registry/mentor');
