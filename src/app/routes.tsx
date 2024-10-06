@@ -1,5 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 import { ROUTES } from '@/app/const';
+import { mentorshipCoursesLoader } from '@/pages/mentorship/mentorship-courses-loader.ts';
 import { courseLoader } from '@/widgets/course-main/courseLoader.ts';
 
 const coursesRoute: RouteObject = {
@@ -23,6 +24,15 @@ const coursesRoute: RouteObject = {
       },
     },
     {
+      path: `${ROUTES.NODE_JS}/${ROUTES.MENTORSHIP}`,
+      loader: () => mentorshipCoursesLoader(ROUTES.NODE_JS),
+      lazy: async () => {
+        const { Mentorship } = await import('@/pages/mentorship/mentorship.tsx');
+
+        return { Component: Mentorship };
+      },
+    },
+    {
       path: ROUTES.JS,
       loader: courseLoader,
       async lazy() {
@@ -32,12 +42,30 @@ const coursesRoute: RouteObject = {
       },
     },
     {
+      path: `${ROUTES.JS}/${ROUTES.MENTORSHIP}`,
+      loader: () => mentorshipCoursesLoader(ROUTES.JS),
+      lazy: async () => {
+        const { Mentorship } = await import('@/pages/mentorship/mentorship.tsx');
+
+        return { Component: Mentorship };
+      },
+    },
+    {
       path: ROUTES.JS_RU,
       loader: courseLoader,
       async lazy() {
         const { JavaScriptRu } = await import('@/pages/javascript-ru.tsx');
 
         return { Component: JavaScriptRu };
+      },
+    },
+    {
+      path: `${ROUTES.JS_RU}/${ROUTES.MENTORSHIP}`,
+      loader: () => mentorshipCoursesLoader(ROUTES.JS_RU),
+      lazy: async () => {
+        const { Mentorship } = await import('@/pages/mentorship/mentorship.tsx');
+
+        return { Component: Mentorship };
       },
     },
     {
@@ -56,6 +84,15 @@ const coursesRoute: RouteObject = {
         const { Angular } = await import('@/pages/angular.tsx');
 
         return { Component: Angular };
+      },
+    },
+    {
+      path: `${ROUTES.ANGULAR}/${ROUTES.MENTORSHIP}`,
+      loader: () => mentorshipCoursesLoader(ROUTES.ANGULAR),
+      lazy: async () => {
+        const { Mentorship } = await import('@/pages/mentorship/mentorship.tsx');
+
+        return { Component: Mentorship };
       },
     },
     {
@@ -83,6 +120,15 @@ const coursesRoute: RouteObject = {
         const { React } = await import('@/pages/react.tsx');
 
         return { Component: React };
+      },
+    },
+    {
+      path: `${ROUTES.REACT}/${ROUTES.MENTORSHIP}`,
+      loader: () => mentorshipCoursesLoader(ROUTES.REACT),
+      lazy: async () => {
+        const { Mentorship } = await import('@/pages/mentorship/mentorship.tsx');
+
+        return { Component: Mentorship };
       },
     },
     {
@@ -131,14 +177,14 @@ export const routes: RouteObject[] = [
           return { Component: Community };
         },
       },
-      {
-        path: ROUTES.MENTORING,
-        lazy: async () => {
-          const { Mentoring } = await import('@/pages/mentoring.tsx');
-
-          return { Component: Mentoring };
-        },
-      },
+      // {
+      //   path: ROUTES.MENTORSHIP,
+      //   lazy: async () => {
+      //     const { Mentorship } = await import('@/pages/mentorship/mentorship.tsx');
+      //
+      //     return { Component: Mentorship };
+      //   },
+      // },
       coursesRoute,
     ],
   },
