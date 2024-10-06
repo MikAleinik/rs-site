@@ -1,11 +1,12 @@
+import { ROUTES } from '@/app/const';
 import { About } from '@/widgets/about';
 import { AngularTopics } from '@/widgets/angular-topics';
 import { Breadcrumbs } from '@/widgets/breadcrumbs';
 import { Certification } from '@/widgets/certification';
 import { Communication } from '@/widgets/communication';
 import { CourseMain } from '@/widgets/course-main';
-import { MentorsWanted } from '@/widgets/mentors-wanted';
 import { Required } from '@/widgets/required';
+import { Requirements } from '@/widgets/requirements';
 import { StudyPath } from '@/widgets/study-path';
 import { Trainers } from '@/widgets/trainers';
 import { TrainingProgram } from '@/widgets/training-program';
@@ -25,7 +26,7 @@ export const Angular = () => {
       <Communication courseName={COURSE_NAME} />
       <StudyPath path={COURSE_NAME} />
       <Required courseName={COURSE_NAME} marked1 />
-      <MentorsWanted />
+      <Requirements link={ROUTES.ANGULAR} />
       <Trainers trainers={angular} />
     </>
   );
