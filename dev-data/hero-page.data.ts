@@ -23,7 +23,7 @@ export const heroPageData = {
     heroImageSrc: '',
     imageAltText: '',
   },
-  mentoring: {
+  mentorship: {
     mainTitle: 'The Rolling Scopes',
     widgetTitle: 'By teaching others, you learn yourself',
     subTitle: ['an international community of developers', 'since 2013'],
